@@ -1,5 +1,5 @@
 // Deploy this file as a Cloudflare Worker.
-// In Worker Settings > Variables and Secrets, add OPENAI_API_KEY as a secret.
+// In Worker Settings > Variables and Secrets, add OPENAI_API_KEY_1 as a secret.
 // Never paste the key into this file or into script.js.
 
 const SYSTEM_PROMPT =
@@ -28,7 +28,7 @@ export default {
     // Browsers ask permission with OPTIONS before sending JSON.
     if (request.method === "OPTIONS") return new Response(null, { headers });
     if (request.method !== "POST") return reply({ error: "Use POST to chat." }, 405);
-    if (!env.OPENAI_API_KEY) return reply({ error: "The Worker is missing its API key secret." }, 500);
+    if (!env.OPENAI_API_KEY_1) return reply({ error: "The Worker is missing its API key secret." }, 500);
 
     let body;
     try {
@@ -55,7 +55,7 @@ export default {
       const openAIResponse = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",
         headers: {
-          Authorization: "Bearer " + env.OPENAI_API_KEY,
+          Authorization: "Bearer " + env.OPENAI_API_KEY_1,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
