@@ -64,7 +64,15 @@ export default {
           max_completion_tokens: 500,
         }),
       });
-      if (!openAIResponse.ok) return reply({ error: "The AI service could not answer right now." }, 502);
+      if (!openAIResponse.ok) {
+        const upstreamError = await openAIResponse.json().catch(() => null);
+        const upstreamCode = typeof upstreamError?.error?.code === "string"
+          ? upstreamError.error.code
+          : "unknown_error";
+        return reply({
+          error: `The AI service could not answer right now (HTTP ${openAIResponse.status}, ${upstreamCode}).`,
+        }, 502);
+      }
       return reply(await openAIResponse.json());
     } catch {
       return reply({ error: "The AI service could not be reached." }, 502);
