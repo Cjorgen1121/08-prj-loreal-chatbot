@@ -17,7 +17,16 @@ const conversationHistory = [];
 function addMessage(message, speaker) {
   const bubble = document.createElement("div");
   bubble.className = "message " + speaker;
-  bubble.textContent = message; // textContent keeps user text from becoming HTML.
+
+  const label = document.createElement("span");
+  label.className = "message-label";
+  label.textContent = speaker === "user" ? "You" : "Beauty Advisor";
+
+  const body = document.createElement("span");
+  body.className = "message-body";
+  body.textContent = message; // Keep text safe and preserve short paragraphs.
+
+  bubble.append(label, body);
   chatWindow.appendChild(bubble);
   chatWindow.scrollTop = chatWindow.scrollHeight;
 }
@@ -29,7 +38,7 @@ function setBusy(busy) {
 }
 
 // Start with a friendly greeting.
-addMessage("Hello! Ask me about L’Oréal products, beauty routines, or recommendations.", "assistant");
+addMessage("Hi! Tell me what you’re looking for, and we’ll find a L’Oréal routine or product that fits.", "assistant");
 
 // A suggested question fills the input, leaving the user free to edit it.
 promptButtons.forEach((button) => {
@@ -50,7 +59,7 @@ chatForm.addEventListener("submit", async (event) => {
 
   if (WORKER_URL === "/api/chat" &&
       (location.hostname === "localhost" || location.hostname.endsWith(".app.github.dev"))) {
-    addMessage("Live replies will work after Cloudflare Pages deploys this project and you add the OPENAI_API_KEY secret.", "assistant");
+    addMessage("Live replies aren’t connected in this preview yet. You can still explore the page and try the question ideas.", "assistant");
     return;
   }
 

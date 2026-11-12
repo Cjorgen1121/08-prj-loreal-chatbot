@@ -36,9 +36,11 @@ h2 { margin-bottom: 0; font-size: 20px; font-weight: 600; letter-spacing: -.03em
 .status::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 7px; border-radius: 50%; background: var(--gold); vertical-align: middle; }
 
 .chat-window { height: 390px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; padding: 22px 2px; scroll-behavior: smooth; }
-.message { max-width: 82%; padding: 13px 16px; border-radius: 16px; font-size: 13px; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; }
+.message { max-width: 82%; padding: 14px 16px; border-radius: 16px; font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; }
 .message.assistant { align-self: flex-start; background: var(--cream); border-bottom-left-radius: 4px; }
 .message.user { align-self: flex-end; background: var(--ink); color: #fff; border-bottom-right-radius: 4px; }
+.message-label { display: block; margin-bottom: 5px; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; opacity: .72; }
+.message-body { display: block; white-space: pre-wrap; }
 
 .chat-form { display: flex; gap: 10px; padding-top: 18px; border-top: 1px solid var(--line); }
 .chat-form input { min-width: 0; flex: 1; padding: 13px 14px; border: 1px solid var(--line); border-radius: 4px; background: #fff; color: var(--ink); font-size: 13px; }
@@ -58,7 +60,7 @@ h2 { margin-bottom: 0; font-size: 20px; font-weight: 600; letter-spacing: -.03em
 .official-link { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; color: var(--ink); font-size: 11px; font-weight: 700; text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
 .official-link span { color: var(--gold); font-size: 17px; text-decoration: none; }
 .latest-question { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
-.latest-question p:last-child { margin-bottom: 0; color: var(--muted); font-size: 12px; line-height: 1.7; overflow-wrap: anywhere; }
+.latest-question p:last-child { margin-bottom: 0; color: var(--muted); font-size: 13px; line-height: 1.7; overflow-wrap: anywhere; }
 
 .site-footer { padding: 30px 0 36px; color: var(--muted); text-align: center; font-size: 10px; line-height: 1.6; }
 .site-footer p { margin: 0; }
