@@ -1,6 +1,7 @@
-// Cloudflare Pages serves this route from functions/api/chat.js.
-// For a separate Worker, replace this path with its full deployed URL.
-const WORKER_URL = "/api/chat";
+// Cloudflare Pages runs the chat Function. The GitHub Pages submission uses that same endpoint.
+const WORKER_URL = location.hostname === "cjorgen1121.github.io"
+  ? "https://08-prj-loreal-chatbot-7h5.pages.dev/api/chat"
+  : "/api/chat";
 
 // Get the page elements we will use.
 const chatForm = document.getElementById("chatForm");
