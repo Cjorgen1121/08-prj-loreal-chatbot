@@ -1,2 +1,6 @@
-# Secrets file containing API keys
+# Local secrets and generated files never belong in Git.
 secrets.js
+.env*
+.dev.vars*
+node_modules/
+dist/

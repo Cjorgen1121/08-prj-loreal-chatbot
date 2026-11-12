@@ -1,0 +1,8 @@
+{
+  "name": "loreal-beauty-advisor",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}
